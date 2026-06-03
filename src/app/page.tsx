@@ -48,50 +48,6 @@ const projects: Project[] = [
   },
   // ── Graphic Design ─────────────────────────────────
   {
-    id: 3,
-    title: "Konten Kreatif — Set 1 (A)",
-    category: "Graphic Design",
-    year: "2025",
-    description: "Seri konten visual pertama dengan pendekatan layout modern, tipografi bersih, dan palet warna yang kuat untuk kebutuhan media sosial.",
-    tools: ["Canva", "Desain Grafis"],
-    image: "/portfolio/Desain_Saya/konten1/1.png",
-    challenge: "Menciptakan konten yang menarik perhatian dalam 3 detik pertama scroll feed media sosial.",
-    solution: "Menggunakan kontras warna maksimal, headline besar, dan komposisi asimetris yang dinamis."
-  },
-  {
-    id: 4,
-    title: "Konten Kreatif — Set 1 (B)",
-    category: "Graphic Design",
-    year: "2025",
-    description: "Varian kedua dari seri konten pertama dengan eksplorasi tipografi berbeda dan komposisi elemen yang lebih eksperimental.",
-    tools: ["Canva", "Desain Grafis"],
-    image: "/portfolio/Desain_Saya/konten1/2.png",
-    challenge: "Menjaga konsistensi visual antar slide dalam satu seri konten multi-part.",
-    solution: "Mengunci palet warna dan font utama, lalu memvariasikan layout dan elemen pendukung pada tiap slide."
-  },
-  {
-    id: 5,
-    title: "Konten Kreatif — Set 1 (C)",
-    category: "Graphic Design",
-    year: "2025",
-    description: "Bagian ketiga dari seri konten pertama dengan variasi tata letak dan pendekatan visual yang segar.",
-    tools: ["Canva", "Desain Grafis"],
-    image: "/portfolio/Desain_Saya/konten1/3.png",
-    challenge: "Menghindari kebosanan visual dalam seri konten yang panjang tanpa merusak identitas keseluruhan.",
-    solution: "Rotasi posisi elemen utama dan sub-elemen dekoratif sambil mempertahankan grid dan palet yang sama."
-  },
-  {
-    id: 6,
-    title: "Konten Kreatif — Set 1 (D)",
-    category: "Graphic Design",
-    year: "2025",
-    description: "Penutup seri konten pertama dengan penekanan pada call-to-action dan layout yang mengundang interaksi.",
-    tools: ["Canva", "Desain Grafis"],
-    image: "/portfolio/Desain_Saya/konten1/4.png",
-    challenge: "Merancang slide penutup yang mendorong audiens untuk bertindak (like, share, comment, atau DM).",
-    solution: "Menempatkan CTA di zona hotspot visual dengan warna kontras dan panah arah yang memandu mata pembaca."
-  },
-  {
     id: 7,
     title: "Ucapan Hari Raya — Idul Fitri",
     category: "Graphic Design",
@@ -563,7 +519,7 @@ export default function Page() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden border-t border-slate-200/60 bg-[#faf6f2]/95 backdrop-blur-xl px-5 pb-5 pt-3 flex flex-col gap-1">
-            {[['#about','About'],['#education','Education'],['#works','Works'],['#sandbox','Sandbox'],['#contact','Contact']].map(([href, label]) => (
+            {[['#about', 'About'], ['#education', 'Education'], ['#works', 'Works'], ['#sandbox', 'Sandbox'], ['#contact', 'Contact']].map(([href, label]) => (
               <a
                 key={href}
                 href={href}
