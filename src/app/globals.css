@@ -83,3 +83,38 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 12px 30px 0 rgba(255, 107, 74, 0.08);
   transform: translateY(-4px);
 }
+
+/* ── Mobile Optimizations ──────────────────────────── */
+
+/* Remove tap delay on interactive elements */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Safe area padding for iPhone notch / home bar */
+@supports (padding: max(0px)) {
+  header {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+  footer {
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Hide scrollbar on mobile for cleaner look */
+@media (max-width: 640px) {
+  .gallery-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-scroll {
+    scrollbar-width: none;
+  }
+}
+
+/* Prevent text from being too small on mobile */
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}

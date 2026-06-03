@@ -473,6 +473,7 @@ const skills = [
 export default function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sandboxFontSize, setSandboxFontSize] = useState(44);
   const [sandboxWeight, setSandboxWeight] = useState(700);
   const [sandboxPalette, setSandboxPalette] = useState("orange");
@@ -506,68 +507,87 @@ export default function Page() {
 
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#faf6f2]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <a href="#hero" className="text-xl font-bold tracking-wider text-slate-900 hover:text-[#ff6b4a] transition-colors duration-200 uppercase">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-10">
+          <a href="#hero" className="text-base sm:text-xl font-bold tracking-wider text-slate-900 hover:text-[#ff6b4a] transition-colors duration-200 uppercase">
             Luffy3Darma
           </a>
 
+          {/* Desktop Nav */}
           <nav className="hidden items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-600 md:flex">
-            <a href="#about" className="transition hover:text-[#ff6b4a]">
-              About
-            </a>
-            <a href="#education" className="transition hover:text-[#ff6b4a]">
-              Education
-            </a>
-            <a href="#works" className="transition hover:text-[#ff6b4a]">
-              Works
-            </a>
-            <a href="#sandbox" className="transition hover:text-[#ff6b4a]">
-              Sandbox
-            </a>
-            <a href="#contact" className="transition hover:text-[#ff6b4a]">
-              Contact
-            </a>
+            <a href="#about" className="transition hover:text-[#ff6b4a]">About</a>
+            <a href="#education" className="transition hover:text-[#ff6b4a]">Education</a>
+            <a href="#works" className="transition hover:text-[#ff6b4a]">Works</a>
+            <a href="#sandbox" className="transition hover:text-[#ff6b4a]">Sandbox</a>
+            <a href="#contact" className="transition hover:text-[#ff6b4a]">Contact</a>
           </nav>
 
-          <a
-            href="#contact"
-            className="relative group flex items-center gap-2.5 rounded-full border border-slate-200 bg-white/80 pl-1 pr-4 py-1 hover:border-[#ff6b4a]/40 hover:bg-[#ff6b4a]/5 hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm"
-            title="Hubungi Saya"
-          >
-            {/* Profile photo */}
-            <span className="relative flex-shrink-0">
-              <span className="block w-8 h-8 rounded-full overflow-hidden border-2 border-white ring-2 ring-transparent group-hover:ring-[#ff6b4a]/40 transition-all duration-300 shadow-sm">
-                <Image
-                  src="/portfolio/profil/WhatsApp Image 2026-06-04 at 02.52.17.jpeg"
-                  alt="Luffy3Darma"
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-cover"
-                />
+          {/* Right side: avatar + hamburger */}
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="relative group flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 pl-1 pr-3 py-1 hover:border-[#ff6b4a]/40 hover:bg-[#ff6b4a]/5 hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm"
+              title="Hubungi Saya"
+            >
+              <span className="relative flex-shrink-0">
+                <span className="block w-7 h-7 rounded-full overflow-hidden border-2 border-white ring-2 ring-transparent group-hover:ring-[#ff6b4a]/40 transition-all duration-300 shadow-sm">
+                  <Image
+                    src="/portfolio/profil/WhatsApp Image 2026-06-04 at 02.52.17.jpeg"
+                    alt="Luffy3Darma"
+                    width={28}
+                    height={28}
+                    className="w-full h-full object-cover"
+                  />
+                </span>
+                <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 border-2 border-white shadow-sm">
+                  <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+                </span>
               </span>
-              {/* Green availability pulse dot */}
-              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white shadow-sm">
-                <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+              <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-[#ff6b4a] transition-colors">
+                Hubungi
               </span>
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-[#ff6b4a] transition-colors">
-              Hubungi
-            </span>
-          </a>
+            </a>
+
+            {/* Hamburger — mobile only */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-xl border border-slate-200 bg-white/80 shadow-sm gap-1 hover:border-[#ff6b4a]/30 transition-all"
+              aria-label="Toggle menu"
+            >
+              <span className={`block h-0.5 w-4 bg-slate-700 rounded transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`} />
+              <span className={`block h-0.5 w-4 bg-slate-700 rounded transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-4 bg-slate-700 rounded transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`} />
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden border-t border-slate-200/60 bg-[#faf6f2]/95 backdrop-blur-xl px-5 pb-5 pt-3 flex flex-col gap-1">
+            {[['#about','About'],['#education','Education'],['#works','Works'],['#sandbox','Sandbox'],['#contact','Contact']].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-3 text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-[#ff6b4a] hover:bg-[#ff6b4a]/5 rounded-xl transition-all"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
       {/* Hero Section */}
       <section
         id="hero"
-        className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-16 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-24 items-center"
+        className="mx-auto grid max-w-7xl gap-8 px-5 pb-14 pt-10 sm:gap-12 sm:px-6 sm:pb-20 sm:pt-16 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-24 items-center"
       >
         <div className="flex flex-col justify-center">
           <div className="mb-6 inline-flex w-fit items-center rounded-full border border-[#ff6b4a]/25 bg-[#ff6b4a]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#d35400]">
             Sketsa &bull; Desain &bull; UI/UX
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-black leading-tight text-slate-900 sm:text-5xl lg:text-7xl tracking-tight uppercase">
+          <h1 className="max-w-3xl text-3xl font-black leading-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-7xl tracking-tight uppercase">
             Menggambar Sketsa, Desain, UI/UX
           </h1>
 
@@ -613,7 +633,7 @@ export default function Page() {
               <span className="h-3 w-3 rounded-full bg-emerald-400" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
               <div className="rounded-2xl border border-slate-100 bg-white p-5 group cursor-pointer hover:border-[#ff6b4a]/20 transition-all duration-300 shadow-sm">
                 <div className="mb-3 h-36 rounded-2xl bg-gradient-to-br from-[#ff6b4a] to-[#f5b041] overflow-hidden relative border border-slate-100">
                   <Image src="/portfolio/ui-ux/admin-natasha.png" alt="UI Case Study" fill className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" />
@@ -644,7 +664,7 @@ export default function Page() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-150 bg-white p-5 md:col-span-3 shadow-sm border border-slate-200">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:col-span-3 shadow-sm">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#ff6b4a]">Status Ketersediaan</p>
@@ -904,9 +924,9 @@ export default function Page() {
 
           <div
             className="gallery-scroll overflow-y-auto pr-1"
-            style={{ maxHeight: "780px", scrollBehavior: "smooth" }}
+            style={{ maxHeight: "min(780px, 70vh)", scrollBehavior: "smooth" }}
           >
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 pb-10">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 pb-10">
               {filteredProjects.map((project) => (
                 <article
                   key={project.id}
@@ -914,7 +934,7 @@ export default function Page() {
                   className="glass-card group overflow-hidden rounded-3xl flex flex-col h-full justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="h-56 w-full relative overflow-hidden bg-slate-50 border-b border-slate-100">
+                    <div className="h-44 sm:h-56 w-full relative overflow-hidden bg-slate-50 border-b border-slate-100">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -1139,15 +1159,15 @@ export default function Page() {
       </section>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="border-t border-slate-200 px-6 py-12 lg:px-10 mt-16 bg-[#faf6f2]/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-col md:flex-row justify-between items-center gap-6">
+      <footer id="contact" className="border-t border-slate-200 px-5 py-10 sm:px-6 sm:py-12 lg:px-10 mt-12 sm:mt-16 bg-[#faf6f2]/80 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 md:flex-row md:justify-between">
           <div className="text-center md:text-left">
             <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">© {new Date().getFullYear()} Luffy3Darma. All rights reserved.</p>
             <p className="mt-1 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Dirancang & dikoding rapi menggunakan Next.js & Tailwind CSS v4</p>
           </div>
 
           {/* Professional Social Badges */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full sm:w-auto">
             {/* Instagram — brand gradient purple-pink-orange */}
             <a
               href="https://instagram.com/luffy3d_"
