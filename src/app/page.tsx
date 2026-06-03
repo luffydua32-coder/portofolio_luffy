@@ -393,28 +393,28 @@ const education: EducationItem[] = [
     title: "Sekolah Menengah Kejuruan (SMK)",
     institution: "SMK Muhammadiyah Sangkulirang",
     description:
-      "Mulai mendalami teknologi komputer dasar, manajemen berkarya, dan dasar-dasar kreativitas visual kejuruan."
+      "Jurusan Akuntansi — mempelajari pembukuan, neraca saldo, perhitungan pajak, Microsoft Excel, dan spreadsheet keuangan secara mendalam."
   },
   {
     year: "2017 - 2020",
     title: "Madrasah Tsanawiyah (Setara SMP)",
     institution: "MTs Nurussa`adah Sangkulirang",
     description:
-      "Mengasah ketertarikan awal pada ilustrasi, menggambar sketsa manual di kertas, dan apresiasi seni budaya."
+      "Fokus pada pendidikan agama Islam, ilmu umum, dan bermasyarakat. Mata pelajaran Seni Budaya membuka ketertarikan awal pada menggambar dan apresiasi seni."
   },
   {
     year: "2011 - 2017",
     title: "Sekolah Dasar (SD)",
     institution: "SD 037 Samarinda & SD 007 Sangkulirang",
     description:
-      "Masa pengenalan awal akademis dasar, melatih koordinasi motorik halus lewat menggambar, mewarnai, dan kriya seni."
+      "Mempelajari mata pelajaran akademis dasar seperti Matematika, IPA, IPS, Bahasa Indonesia, dan PKn. Mulai mengenal kegiatan menggambar dan mewarnai sebagai aktivitas kreatif."
   },
   {
     year: "2010 - 2011",
     title: "Taman Kanak-kanak (TK)",
     institution: "TK Samarinda",
     description:
-      "Masa pengenalan awal bersosialisasi dan eksplorasi kreativitas menggunakan bentuk geometri dan warna-warni cerah."
+      "Masa pengenalan awal dunia pendidikan — belajar bersosialisasi, mengenal huruf dan angka, bermain, serta kegiatan umum khas anak usia dini."
   }
 ];
 
@@ -548,7 +548,7 @@ export default function Page() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
-            Halo! Saya Luffy3Darma. Saya membuat antarmuka digital yang bersih, konsep sketsa karakter digital yang ekspresif, dan sistem identitas visual yang seimbang. Siap bekerja keras dan belajar cepat sebagai desainer magang di studio Anda.
+            Halo! Saya Luffy3Darma — seorang kreator visual yang berfokus pada antarmuka digital bersih, sketsa karakter ekspresif, dan identitas visual yang kohesif. Saya siap berkolaborasi dan memberikan hasil terbaik dalam setiap proyek.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -625,7 +625,7 @@ export default function Page() {
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#ff6b4a]">Status Ketersediaan</p>
                     <h3 className="mt-1 text-xs font-bold text-slate-800 uppercase tracking-wider">
-                      Tersedia untuk magang &amp; proyek kolaborasi visual
+                      Tersedia untuk freelance &amp; kolaborasi proyek visual
                     </h3>
                   </div>
                   <div className="rounded-2xl border border-[#ff6b4a]/20 bg-[#ff6b4a]/5 px-4 py-3 text-xs font-bold uppercase tracking-widest text-[#ff6b4a] text-center">
