@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 
 type Project = {
@@ -427,12 +427,24 @@ const skills = [
 ];
 
 export default function Page() {
+  const [showSplash, setShowSplash] = useState(true);
+  const [splashOpacity, setSplashOpacity] = useState(1);
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sandboxFontSize, setSandboxFontSize] = useState(44);
   const [sandboxWeight, setSandboxWeight] = useState(700);
   const [sandboxPalette, setSandboxPalette] = useState("orange");
+
+  useEffect(() => {
+    // 2 detik loading screen
+    const timer = setTimeout(() => {
+      setSplashOpacity(0);
+      setTimeout(() => setShowSplash(false), 500); // 500ms fade out duration
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return projects;
     return projects.filter((project) => project.category === activeCategory);
@@ -453,7 +465,31 @@ export default function Page() {
 
 
   return (
-    <main className="min-h-screen bg-transparent text-slate-900 relative">
+    <>
+      {/* Loading Splash Screen */}
+      {showSplash && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#faf6f2] transition-opacity duration-500"
+          style={{ opacity: splashOpacity }}
+        >
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative w-20 h-20">
+              <div className="absolute inset-0 border-4 border-slate-200 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-[#ff6b4a] rounded-full animate-spin border-t-transparent shadow-[0_0_15px_rgba(255,107,74,0.5)]"></div>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl font-black uppercase tracking-widest text-slate-900 animate-pulse">
+                Luffy3Darma
+              </h2>
+              <p className="mt-2 text-xs font-bold uppercase tracking-widest text-[#ff6b4a]">
+                Memuat Portofolio...
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <main className="min-h-screen bg-transparent text-slate-900 relative">
       {/* Decorative floating blur spheres */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute left-[5%] top-[2%] h-[400px] w-[400px] rounded-full glow-sphere-1 blur-3xl" />
@@ -1194,5 +1230,6 @@ export default function Page() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
